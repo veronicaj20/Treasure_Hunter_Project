@@ -123,6 +123,12 @@ public class Town
                 hunter.changeGold(-1 * goldDiff);
             }
         }
+
+        if (hunter.getGold() <= 0){
+        hunter.exit();
+
+        }
+
     }
 
     public String toString()

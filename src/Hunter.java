@@ -234,6 +234,10 @@ public class Hunter
         searched = false;
     }
 
+    public void exit(){
+        System.exit(0);
+    }
+
 
     /**
      * @return A string representation of the hunter.
