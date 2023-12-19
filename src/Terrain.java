@@ -26,7 +26,7 @@ public class Terrain
 
     public String getNeededItem()
     {
-        return neededItem;
+        return neededItem.toLowerCase();
     }
 
     /**
@@ -38,7 +38,7 @@ public class Terrain
      */
     public boolean canCrossTerrain(Hunter hunter)
     {
-        if(hunter.hasItemInKit(neededItem))
+        if(hunter.hasItemInKit(neededItem.toLowerCase()))
         {
             return true;
         }
