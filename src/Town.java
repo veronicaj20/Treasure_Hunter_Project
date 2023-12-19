@@ -124,6 +124,7 @@ public class Town
         }
 
         if (hunter.getGold() <= 0){
+            System.out.println("Wow, you lost all your gold from that fight... unfortunately, YOU LOSE!");
         hunter.exit();
 
         }

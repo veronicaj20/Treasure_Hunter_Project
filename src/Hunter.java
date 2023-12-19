@@ -222,6 +222,7 @@ public class Hunter
                 // win condition
                 if (treasuresFound == 3) {
                     System.out.println("Congratulations, " + hunterName + "! You collected all three treasures and have won the game!");
+                    exit();
                 }
             }
             else {
