@@ -98,25 +98,24 @@ public class TreasureHunter
         Scanner scanner = new Scanner(System.in);
         String choice = "";
 
-        while (!(choice.equals("X") || choice.equals("x")))
-        {
-            System.out.println();
+        while (!(choice.equalsIgnoreCase("X"))) {
+            System.out.println("\033[0;36m"); // Cyan color
             System.out.println(currentTown.getLatestNews());
-            System.out.println("***");
-            System.out.println(hunter);
+            System.out.println("\033[0;33m***\033[0m"); // Yellow color for divider
+            System.out.println("\033[1m" + hunter + "\033[0m"); // Bold hunter
             System.out.println(currentTown);
-            System.out.println("(B)uy something at the shop.");
-            System.out.println("(S)ell something at the shop.");
-            System.out.println("(M)ove on to a different town.");
-            System.out.println("(L)ook for trouble!");
-            System.out.println("(H)unt for treasure!");
-            System.out.println("Give up the hunt and e(X)it.");
-            System.out.println();
-            System.out.print("What's your next move? ");
-            choice = scanner.nextLine();
-            choice = choice.toUpperCase();
+            System.out.println("\033[0;32m(B)uy something at the shop.\033[0m");
+            System.out.println("\033[0;32m(S)ell something at the shop.\033[0m");
+            System.out.println("\033[0;32m(M)ove on to a different town.\033[0m");
+            System.out.println("\033[0;31m(L)ook for trouble!\033[0m");
+            System.out.println("\033[0;35m(H)unt for treasure!\033[0m");
+            System.out.println("\033[0;34mGive up the hunt and e(X)it.\033[0m");
+            System.out.print("\033[1;37mWhat's your next move? \033[0m"); // Bold white text
+            choice = scanner.nextLine().toUpperCase();
             processChoice(choice);
+            System.out.println("\033[0m"); // Reset color
         }
+
     }
 
     /**
