@@ -72,7 +72,7 @@ public class Town
                 hunter.removeItemFromKit(item);
                 printMessage += "\nUnfortunately, your " + item + " broke.";
             }
-
+            hunter.updateSearched();
             return true;
         }
 
