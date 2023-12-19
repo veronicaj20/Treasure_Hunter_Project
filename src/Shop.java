@@ -85,11 +85,11 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = "water: " + WATER_COST + " gold\n";
+        str += "rope: " + ROPE_COST + " gold\n";
+        str += "machete: " + MACHETE_COST + " gold\n";
+        str += "horse: " + HORSE_COST + " gold\n";
+        str += "boat: " + BOAT_COST + " gold\n";
 
         return str;
     }
