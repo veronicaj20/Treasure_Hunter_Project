@@ -218,11 +218,20 @@ public class Hunter
                     System.out.println("Aye, you found " + treasure + "!");
                     treasuresFound++;
                 }
+
+                // win condition
+                if (treasuresFound == 3) {
+                    System.out.println("Congratulations, " + hunterName + "! You collected all three treasures and have won the game!");
+                }
             }
             else {
                 System.out.println("Sorry mate, you didn't find anything. Better luck next time!");
             }
         }
+    }
+
+    public void updateSearched() {
+        searched = false;
     }
 
 
