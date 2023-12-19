@@ -12,6 +12,11 @@ public class Hunter
     private String kit;
     private int gold;
 
+    // variables to keep track of the treasures
+    private String treasure;
+    private int treasuresFound;
+    private boolean searched;
+
     //Constructor
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -23,6 +28,10 @@ public class Hunter
         this.hunterName = hunterName;
         kit = "";
         gold = startingGold;
+
+        treasure = "";
+        treasuresFound = 0;
+        searched = false;
     }
 
     //Accessors
@@ -174,6 +183,48 @@ public class Hunter
         }
         return printableKit;
     }
+
+    public void genTreasure() {
+        if (searched) {
+            System.out.println("You've already searched for treasure in this town!\n" +
+                    "Moe on to the next town to continue.");
+        }
+        else {
+            double rand = (int) (Math.random() * 4) + 1;
+            boolean found = false;
+            if (rand == 1) {
+                treasure = "rubies";
+                found = true;
+            }
+            else if (rand == 2) {
+                treasure = "pearls";
+                found = true;
+            }
+            else if (rand == 3) {
+                treasure = "diamonds";
+                found = true;
+            }
+            else if (rand == 4) {
+                treasure = "nothing";
+            }
+
+            searched = true;
+
+            if (found) {
+                if (hasItemInKit(treasure)) {
+                    System.out.println("You found a duplicate " + treasure + " and must discard it! Sorry.");
+                } else {
+                    addItem(treasure);
+                    System.out.println("Aye, you found " + treasure + "!");
+                    treasuresFound++;
+                }
+            }
+            else {
+                System.out.println("Sorry mate, you didn't find anything. Better luck next time!");
+            }
+        }
+    }
+
 
     /**
      * @return A string representation of the hunter.
