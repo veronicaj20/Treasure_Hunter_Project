@@ -187,7 +187,7 @@ public class Hunter
     public void genTreasure() {
         if (searched) {
             System.out.println("You've already searched for treasure in this town!\n" +
-                    "Moe on to the next town to continue.");
+                    "Move on to the next town to continue.");
         }
         else {
             double rand = (int) (Math.random() * 4) + 1;
