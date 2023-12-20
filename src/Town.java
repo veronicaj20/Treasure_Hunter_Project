@@ -10,16 +10,18 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private boolean cheatMode;
     //Constructor
     /**
      * The Town Constructor takes in a shop and the surrounding terrain, but leaves the hunter as null until one arrives.
      * @param s The town's shoppe.
      * @param t The surrounding terrain.
      */
-    public Town(Shop shop, double toughness)
+    public Town(Shop shop, double toughness, boolean cheatMode)
     {
         this.shop = shop;
         this.terrain = getNewTerrain();
+        this.cheatMode = cheatMode;
 
         // the hunter gets set using the hunterArrives method, which
         // gets called from a client class
@@ -91,44 +93,42 @@ public class Town
      */
     public void lookForTrouble()
     {
-        double noTroubleChance;
-        if (toughTown)
-        {
-            noTroubleChance = 0.66;
+        printMessage = "";
+        if (cheatMode){
+            printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+            printMessage += "\nYou won the brawl and receive " +  100 + " gold.";
+            hunter.changeGold(100);
         }
-        else
-        {
-            noTroubleChance = 0.33;
-        }
-
-        if (Math.random() > noTroubleChance)
-        {
-            printMessage = "You couldn't find any trouble";
-        }
-        else
-        {
-            printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
-            int goldDiff = (int)(Math.random() * 10) + 1;
-            if (Math.random() > noTroubleChance)
-            {
-                printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
-                printMessage += "\nYou won the brawl and receive " +  goldDiff + " gold.";
-                hunter.changeGold(goldDiff);
+        else {
+            double noTroubleChance;
+            if (toughTown) {
+                noTroubleChance = 0.66;
+            } else {
+                noTroubleChance = 0.33;
             }
-            else
-            {
-                printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
-                printMessage += "\nYou lost the brawl and pay " +  goldDiff + " gold.";
-                hunter.changeGold(-1 * goldDiff);
+
+            if (Math.random() > noTroubleChance) {
+                printMessage = "You couldn't find any trouble";
+            } else {
+                printMessage = "You want trouble, stranger!  You got it!\nOof! Umph! Ow!\n";
+                int goldDiff = (int) (Math.random() * 10) + 1;
+                if (Math.random() > noTroubleChance) {
+                    printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
+                    printMessage += "\nYou won the brawl and receive " + goldDiff + " gold.";
+                    hunter.changeGold(goldDiff);
+                } else {
+                    printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
+                    printMessage += "\nYou lost the brawl and pay " + goldDiff + " gold.";
+                    hunter.changeGold(-1 * goldDiff);
+                }
+            }
+
+            if (hunter.getGold() <= 0) {
+                System.out.println("Wow, you lost all your gold from that fight... unfortunately, YOU LOSE!");
+                hunter.exit();
+
             }
         }
-
-        if (hunter.getGold() <= 0){
-            System.out.println("Wow, you lost all your gold from that fight... unfortunately, YOU LOSE!");
-        hunter.exit();
-
-        }
-
     }
 
     public String toString()
