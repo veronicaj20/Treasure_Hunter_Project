@@ -16,13 +16,21 @@ public class Shop
     // instance variables
     private double markdown;
     private Hunter customer;
-
+    private boolean cheatMode;
     //Constructor
-    public Shop(double markdown)
+    public Shop(double markdown,boolean cheatMode)
     {
         this.markdown = markdown;
         customer = null;
-    }
+        this.cheatMode = cheatMode;
+        if (cheatMode){
+            WATER_COST = 1;
+            ROPE_COST = 1;
+            MACHETE_COST = 1;
+            HORSE_COST = 1;
+            BOAT_COST = 1;
+
+        }    }
 
     /** method for entering the shop
      * @param hunter  the Hunter entering the shop

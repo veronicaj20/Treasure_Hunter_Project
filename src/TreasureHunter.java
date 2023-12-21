@@ -13,6 +13,7 @@ public class TreasureHunter
     private Hunter hunter;
     private boolean easyMode;
     private boolean hardMode;
+    private boolean cheatMode;
 
     //Constructor
     /**
@@ -25,6 +26,7 @@ public class TreasureHunter
         hunter = null;
         hardMode = false;
         easyMode = false;
+        cheatMode = false;
     }
 
     // starts the game; this is the only public method
@@ -50,18 +52,21 @@ public class TreasureHunter
         // set hunter instance variable
         hunter = new Hunter(name, 10);
 
-        System.out.print("Hard mode? (y/n): ");
+        System.out.print("Hard mode? (y/n/c): ");
         String hard = scanner.nextLine();
         if (hard.equals("y") || hard.equals("Y"))
         {
             hardMode = true;
         }
-        else {
+        else if (hard.equals("y") || hard.equals("Y")){
             System.out.print("Easy mode? (y/n): ");
             String easy = scanner.nextLine();
-            if (easy.equals("y") || easy.equals("H")) {
+            if (easy.equals("y") || easy.equals("Y")) {
                 easyMode = true;
             }
+        }
+        else if (hard.equals("c") || hard.equals("C")){
+            cheatMode = true;
         }
     }
 
@@ -88,15 +93,17 @@ public class TreasureHunter
             toughness = 0.2;
         }
 
+
+
         // note that we don't need to access the Shop object
         // outside of this method, so it isn't necessary to store it as an instance
         // variable; we can leave it as a local variable
-        Shop shop = new Shop(markdown);
+        Shop shop = new Shop(markdown,cheatMode);
 
         // creating the new Town -- which we need to store as an instance
         // variable in this class, since we need to access the Town
         // object in other methods of this class
-        currentTown = new Town(shop, toughness, easyMode);
+        currentTown = new Town(shop, toughness, easyMode, cheatMode);
 
         // calling the hunterArrives method, which takes the Hunter
         // as a parameter; note this also could have been done in the
