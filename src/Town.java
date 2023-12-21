@@ -121,10 +121,9 @@ public class Town
                 int goldDiff = (int) (Math.random() * 10) + 1;
                 int easyGoldWin = (int) (Math.random() * 25) + 1;
                 int easyGoldLoss = (int) (Math.random() * 7) + 1;
-                double easyX = Math.random();
 
                 if (easyMode) {
-                    if (Math.random() + Math.random() > noTroubleChance + easyX) {
+                    if (Math.random() + 0.13 > noTroubleChance) {
                         printMessage += "Okay, stranger! You proved yer mettle. Here, take my gold.";
                         printMessage += "\nYou won the brawl and receive " + easyGoldWin + " gold.";
                         hunter.changeGold(easyGoldWin);

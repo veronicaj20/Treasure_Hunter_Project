@@ -58,7 +58,7 @@ public class TreasureHunter
         {
             hardMode = true;
         }
-        else if (hard.equals("y") || hard.equals("Y")){
+        else if (hard.equals("n") || hard.equals("N")){
             System.out.print("Easy mode? (y/n): ");
             String easy = scanner.nextLine();
             if (easy.equals("y") || easy.equals("Y")) {
