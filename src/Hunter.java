@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /**
  * Hunter Class<br /><br />
  * This class represents the treasure hunter character (the player) in the Treasure Hunt game.
@@ -11,6 +12,7 @@ public class Hunter
     private String hunterName;
     private String kit;
     private int gold;
+    private int luck;
 
     // variables to keep track of the treasures
     private String treasure;
@@ -57,6 +59,10 @@ public class Hunter
         {
             gold = 0;
         }
+    }
+
+    public void changeLuck(int modifier) {
+        luck += modifier;
     }
 
     /**
@@ -228,6 +234,38 @@ public class Hunter
             else {
                 System.out.println("Sorry mate, you didn't find anything. Better luck next time!");
             }
+        }
+    }
+
+    public void gamble(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Casino!");
+        System.out.print("How much gold do you want to wager?: ");
+        String x = scanner.nextLine();
+        int wager = Integer.parseInt(x);
+        changeGold(wager * -1);
+
+        System.out.print("Pick a number between 1-12:");
+        String y = scanner.nextLine();
+        int guess = Integer.parseInt(y);
+
+        int dice1 = (int) (Math.random() * 12) + 1;
+        int dice2 = (int) (Math.random() * 12) + 1;
+        int num = dice1 + dice2;
+
+        int goldWon = 0;
+        int goldLost = 0;
+
+        if (guess == num) {
+            System.out.println("You guessed the right number! You get double gold back.");
+            changeGold(wager * 2);
+        }
+        else if (guess == num - 2 || guess == num + 2) {
+            System.out.println("You were within 2 of the number! You get your gold back.");
+            changeGold(wager);
+        }
+        else {
+            System.out.println("That was nowhere close to the number... no gold for you!");
         }
     }
 

@@ -133,6 +133,7 @@ public class TreasureHunter
             System.out.println("\033[0;32m(M)ove on to a different town.\033[0m");
             System.out.println("\033[0;31m(L)ook for trouble!\033[0m");
             System.out.println("\033[0;35m(H)unt for treasure!\033[0m");
+            System.out.println("\033[0;35mGamble at the (C)asino!\033[0m");
             System.out.println("\033[0;34mGive up the hunt and e(X)it.\033[0m");
             System.out.print("\033[1;37mWhat's your next move? \033[0m"); // Bold white text
             choice = scanner.nextLine().toUpperCase();
@@ -171,6 +172,9 @@ public class TreasureHunter
         }
         else if (choice.equals("H") || choice.equals("h")) {
             hunter.genTreasure();
+        }
+        else if (choice.equals("C") || choice.equals("c")) {
+            hunter.gamble();
         }
         else
         {
